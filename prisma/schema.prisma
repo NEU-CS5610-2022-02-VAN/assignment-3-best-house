@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model Users {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String   @unique
+  email   String   @unique
+  password String 
+  lastname String  
+  location String  
+  mood     Moods[] 
+  properties Properties[]
+}
+
+model Moods {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  mood   String   @default("defaultMood")
+  createdAt  DateTime   @default(now())
+  user   Users   @relation(fields: [userId], references: [id])
+  userId String @unique @db.ObjectId
+}
+
+model Properties{
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  address    String     @default("")
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  owner      String     @default("")
+  price      Int?       @default(0)
+  location   String     @default("")
+  status     Status     @default(PENDING)
+  propertyType PropertyType @default(APARTMENT)
+  user   Users   @relation(fields: [userId], references: [id])
+  userId String  @db.ObjectId
+
+}
+
+enum Status{
+  PENDING
+  TRANSCATION
+  CLOSED
+ 
+}
+
+enum PropertyType {
+  HOUSE
+  CONDO
+  TOWNHOUSE
+  APARTMENT
+}
