@@ -7,11 +7,11 @@ import { ObjectId } from "bson";
 const propertyCreate = asyncHandler(async (req, res) => {
   //note : the id here is user id
   const { address, owner, price, location, status, propertyType } = req.body;
-  const id = ObjectId(req.params.id).toString();
+   const auth0Id = ObjectId(req.params.id).toString();
 
   const newItem = await prisma.properties.create({
     data: {
-      user: { connect: { id } },
+      user: { connect: { auth0Id } },
       address: String(address),
       owner: String(owner),
       price: Number(price),
@@ -61,16 +61,12 @@ const propertyReadOne = asyncHandler(async (req, res) => {
 });
 
 const propertyReadAll = asyncHandler(async (req, res) => {
-  //note : the id here is user id
-    const userId = ObjectId(req.params.id).toString();
     const item = await prisma.properties.findMany({
-      where: {
-        userId: userId,
-      },
       select: {
         address: true,
         owner: true,
         price: true,
+        userId:true,
         location: true,
         status: true,
         propertyType: true,

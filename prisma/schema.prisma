@@ -8,11 +8,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
+//use npx prisma generate 
+//https://www.youtube.com/watch?v=b4nxOv91vWI
+
 
 model Users {
+  //id must be string here
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
   name    String   @unique
   email   String   @unique
+  auth0Id  String  @unique @default("")
   password String 
   lastname String  
   location String  

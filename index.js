@@ -1,5 +1,5 @@
 import { ObjectId } from "bson";
-import express from "express";
+import express, { response } from "express";
 import pkg from "@prisma/client";
 import morgan from "morgan";
 import cors from "cors";
@@ -11,10 +11,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
 
+
 app.use("/user", userRoutes);
 app.use("/property", propertyRoutes);
 app.use("/mood",moodRoutes)
+app.get("*", (request, respond) => {
+  respond.send("404");
+});
 // //user create ->tested
+
 // app.post("/userCreate", async (req, res) => {
 //   const { name,email,password } = req.body;
 //   const newItem = await prisma.users.create({

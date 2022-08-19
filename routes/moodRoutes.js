@@ -2,8 +2,7 @@ import express from "express";
 import { moodController } from "../controllers/index.js";
 const moodRouter = express.Router();
 
-moodRouter.route("/Create/:id").post(moodController.moodCreate);
-moodRouter.route("/ReadAll/:id").get(moodController.moodReadAll);
-//moodRouter.route("/ReadOne/:id").get(moodController.moodReadOne);
 
+moodRouter.get("/readall", moodController.moodReadAll);
+moodRouter.post("/create", moodController.moodCreate);
 export default moodRouter;

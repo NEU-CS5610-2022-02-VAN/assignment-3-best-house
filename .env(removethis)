@@ -5,3 +5,7 @@
 # See the documentation for all the connection string options: https://pris.ly/d/connection-strings
 
 DATABASE_URL='mongodb+srv://yyds:yyds1234@mern.pwfbsqx.mongodb.net/MERN?retryWrites=true&w=majority'
+
+AUTH0_JWT_URI="https://dev-hwarhnwi.us.auth0.com/.well-known/jwks.json"
+AUTH0_AUDIENCE = "http://api.yyds"
+AUTH0_ISSUER = "https://dev-hwarhnwi.us.auth0"
