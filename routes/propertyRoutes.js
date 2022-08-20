@@ -3,25 +3,11 @@ import {propertyController } from "../controllers/index.js";
 const propertyRouter = express.Router();
 import { requireAuth } from "../middleware/index.js";
 
-
-
 propertyRouter.get("/ReadAll",propertyController.propertyReadAll);
-
 propertyRouter.post("/create", requireAuth, propertyController.propertyCreate);
-propertyRouter.patch( "/Update/:id",
- requireAuth,
-  propertyController.propertyUpdate
-);
-propertyRouter.get(
-  "/ReadOne/:id",
-  requireAuth,
-  propertyController.propertyReadOne
-);
-propertyRouter.delete(
-  "/DeleteOne/:id",
-  requireAuth,
-  propertyController.propertyDeleteOne
-);
+propertyRouter.patch( "/Update/:id",requireAuth,propertyController.propertyUpdate);
+propertyRouter.get( "/ReadOne/:id",requireAuth,propertyController.propertyReadOne);
+propertyRouter.delete("/DeleteOne/:id",requireAuth,propertyController.propertyDeleteOne);
 
 
 

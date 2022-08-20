@@ -28,9 +28,9 @@ const userVerify = asyncHandler(async (req, res) => {
   } else {
     const newUser = await prisma.users.create({
       data: {
-        email,
-        auth0Id,
-        name,
+        email:string(email),
+        auth0Id:String(auth0Id),
+        name:String(name)
       },
     });
     res.send(newUser);
