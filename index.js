@@ -11,7 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
 
-
 app.use("/user", userRoutes);
 app.use("/property", propertyRoutes);
 app.use("/mood",moodRoutes)
@@ -118,4 +117,5 @@ app.get("*", (request, respond) => {
 app.listen(8000, () => {
   console.log("Server running on http://localhost:8000 🎉 🚀");
 });
+
 
