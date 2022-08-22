@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+
+* {
+  font-family: "PT Sans", sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+table,
+td {
+  border: 1px solid rgb(0, 141, 184);
+  text-align: center;
+}
+
+thead {
+  background-color: rgb(47, 67, 255);
+  color: #fff;
+}
+
+th {
+  padding: 5px;
+}
+
+

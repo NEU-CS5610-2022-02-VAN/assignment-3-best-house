@@ -1,0 +1,50 @@
+.app {
+  margin: 5px;
+}
+
+.title {
+  font-size: 12px;
+  border: 1px solid rgb(0, 255, 179);
+  text-align: center;
+}
+
+.header {
+  width: 100%;
+  border: 1px solid orange;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 5px 0;
+}
+
+.content {
+  width: 100%;
+  border: 1px solid lightskyblue;
+  margin-top: 5px;
+}
+
+.menu-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.menu-list li {
+  margin-right: 8px;
+}
+
+.exit-button {
+  background-color: lightcoral;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: lightcoral;
+  color: aliceblue;
+  height: 100%;
+  font-size: 36px;
+}
