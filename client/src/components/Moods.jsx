@@ -1,19 +1,15 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import useMoods from "../hooks/useMoods";
 import { useAuthToken } from "../AuthTokenContext";
+import { Link } from "react-router-dom";
 
 export default function Mood() {
   const [newMoodTxt, setNewMoodTxt] = useState({}); // the state that store once input
   const [moodItems, setMoodsItems] = useMoods(); //all moods array
   const { accessToken } = useAuthToken();
-    //show all mood 
 
-    //add new mood
-
-    //*show latest mood
-    
-    console.log("mood items=", moodItems);
-
+  console.log("mood items=", moodItems);
+  
   //write
   async function insertMood(object) {
     const data = await fetch(`${process.env.REACT_APP_API_URL}/moods/create`, {
@@ -59,26 +55,26 @@ export default function Mood() {
     }
   };
 
-
-
   return (
     <div>
-      <ul className="list">
+      <ul className="mood-list txt">
           {moodItems.map((item) => {
+            const moodString = item.mood + " // " + item.createdAt;
             return (
               <div key={item.id} className="mood-item" >
-                <span className="mood">{item.mood}   ||</span>
-                <span className="createtime">{item.createdAt}   ||</span>
+                <h5 className="mood">{moodString}</h5>
+                {/* <h5 className="mood-createtime">{item.createdAt}</h5> */}
+                <br></br>
               </div>
             );
           })}
       </ul>
+
       <form
           onSubmit={(e) => handleFormSubmit(e)}
           className="mood-form"
           autoComplete="off"
         >
-          {/* address */}
           <label>new mood:
             <input required={true}
               type="text"
@@ -89,7 +85,10 @@ export default function Mood() {
             />
           </label>
           <button type="submit">Add Property</button>
-        </form>
+      <Link to={`/app`}>
+        <button>Back</button>
+      </Link>
+      </form>
     </div>
   )
 }

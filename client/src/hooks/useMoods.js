@@ -13,7 +13,6 @@ export default function useMoods() {
         },
       });
       const moods = await data.json();
-      console.log("moods =", moods);
       setMoodsItems(moods);
     }
 

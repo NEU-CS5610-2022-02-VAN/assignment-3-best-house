@@ -14,33 +14,20 @@ export default function AppLayout() {
   return (
     <div className="app">
       <div className="title">
-      <Link to={`/`}>
-        <h1>Best House</h1>
-      </Link>
+        <Link to={`/`}>
+          <h1>Best House</h1>
+        </Link>
       </div>
       <div className="header">
-      <div>Welcome 👋 {user.name} </div>
-        <nav className="menu">
-          <ul className="menu-list">
-            <li>
-              <Link to="/app">Profile</Link>
-            </li>
-            <li>
-              <Link to="/app/properties">Properties</Link>
-            </li>
-            {/* <li>
-              <Link to="/app/debugger">Auth Debugger</Link>
-            </li> */}
-            <li>
-              <button
-                className="exit-button"
-                onClick={() => logout({ returnTo: window.location.origin })}
-              >
-                LogOut
-              </button>
-            </li>
-          </ul>
-        </nav>
+        <h3 className="menuTxt">Welcome! User: {user.name}</h3>
+        <h3 className="menuTxt"><Link to="/app/properties">Properties</Link></h3>
+        <h3 className="menuTxt"><Link to="/app">Profile</Link></h3>
+        <button
+          className="btn btn-hero box3"
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
+          LogOut
+        </button>
       </div>
       <div className="content">
         <Outlet />

@@ -101,23 +101,25 @@ export default function HandleProperties() {
 
   return (
     <div className="property-list">
-      <form
+      <form 
         onSubmit={(e) => handleFormSubmit(e)}
         className="property-form"
         autoComplete="off"
       >
-        {/* address */}
-        <label>address(unique):
-          <input required={true}
-            type="text"
-            name="address"
-            id="address"
-            value={newItemText.address}
-            onChange={handleChange}
-          />
-        </label>
+           {/* address */}
+        <label className="txt">address(unique):
+            <br></br>
+            <input required={true}
+              type="text"
+              name="address"
+              id="address"
+              value={newItemText.address}
+              onChange={handleChange}
+            />
+          </label>
         {/* owner */}
-        <label>owner:
+        <label className="txt">owner:
+          <br></br>
           <input required={true}
             type="text"
             name="owner"
@@ -127,7 +129,8 @@ export default function HandleProperties() {
           />
         </label>
         {/* location */}
-        <label>location:
+        <label className="txt">location:
+          <br></br>
           <input required={true}
             type="text"
             name="location"
@@ -137,7 +140,8 @@ export default function HandleProperties() {
           />
         </label>
         {/* Status */}
-        <label>Status:
+        <label className="txt">Status:
+        <br></br>
           <select value={newItemText.status} onChange={handleChange} 
           name ="status" id="status" required={true}>
             <option value=""></option>
@@ -147,7 +151,8 @@ export default function HandleProperties() {
           </select>
         </label>
         {/* type */}
-        <label>Type:
+        <label className="txt">Type:
+        <br></br>
           <select value={newItemText.type} onChange={handleChange} 
           name ="type" id="type" required={true}>
             <option value=""></option>
@@ -158,41 +163,44 @@ export default function HandleProperties() {
           </select>
         </label>
         {/* Price */}
-        <label>Price:
-        <input required={true}
-          type="number"
-          name="price"
-          id="price"
-          value={newItemText.price}
-          onChange={handleChange}
-        />
+        <label className="txt">Price:
+        <br></br>
+          <input required={true}
+            type="number"
+            name="price"
+            id="price"
+            value={newItemText.price}
+            onChange={handleChange}
+          />
         </label>
         {/* Picture */}
-        <label>Picture URL:
-        <input required={true}
-          type="text"
-          name="picture"
-          id="picture"
-          value={newItemText.picture}
-          onChange={handleChange}
-        />
+        <label className="txt">Picture URL:
+        <br></br>
+          <input required={true}
+            type="text"
+            name="picture"
+            id="picture"
+            value={newItemText.picture}
+            onChange={handleChange}
+          />
         </label>
-        <button type="submit">Add Property</button>
+        <button className="button-form" type="submit">Add Property</button>
       </form>
 
-      <ul className="list">
+      <ul className="prop-list box-prop">
         {propertiesItems.map((item) => {
           return (
-            <div key={item.id} className="property-item" >
-              <span className="itemAddress">owner = {item.owner}   ||</span>
-              <span className="itemAddress">address = {item.address}   ||</span>
-              <span className="itemAddress">location = {item.location}   ||</span>
-              <span className="itemAddress">status = {item.status}   ||</span>
-              <span className="itemPrice">price = {item.price}  || </span>
-              <span className="itemType">type = {item.type}   </span>
-              <button value={item.id} onClick={e => deleteProperty(e.target.value)}>X</button>
+            <div key={item.id} className="prop-item" >
+              <h5 className="itemAddress">owner = {item.owner}</h5>
+              <h5 className="itemAddress">address = {item.address}</h5>
+              <h5 className="itemAddress">location = {item.location}</h5>
+              <h5 className="itemAddress">status = {item.status}</h5>
+              <h5 className="itemPrice">price = {item.price}</h5>
+              <h5 className="itemType">type = {item.type}</h5>
+              <br></br>
+              <button className="btn-danger" value={item.id} onClick={e => deleteProperty(e.target.value)}>X</button>
               <Link to={`/app/properties/update/${parseInt(item.id)}`} >
-                <button type="button" value={item.id}>
+                <button className="btn-hipster" type="button" value={item.id}>
                     Edit
                 </button>
               </Link>

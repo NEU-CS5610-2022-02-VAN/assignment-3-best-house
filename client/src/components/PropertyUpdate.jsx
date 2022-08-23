@@ -3,7 +3,6 @@ import useProperties from "../hooks/useProperties";
 import { useAuthToken } from "../AuthTokenContext";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
-// import "../style/todoList.css";
 
 
 export default function EditProperties() {
@@ -83,27 +82,29 @@ export default function EditProperties() {
         }
     };
 
-
     useEffect(() => {getOldProperty()}, []);
 
     return (
+      <div className="updateBox">
       <form
         onSubmit={(e) => handleFormSubmit(e)}
         className="property-form"
         autoComplete="off"
       >
         {/* address */}
-        <label>address:
-          <input required={true}
-            type="text"
-            name="address"
-            id="address"
-            value={newItemText.address}
-            onChange={handleChange}
-          />
-        </label>
+        <label className="txt">address(unique):
+            <br></br>
+            <input required={true}
+              type="text"
+              name="address"
+              id="address"
+              value={newItemText.address}
+              onChange={handleChange}
+            />
+          </label>
         {/* owner */}
-        <label>owner:
+        <label className="txt">owner:
+          <br></br>
           <input required={true}
             type="text"
             name="owner"
@@ -113,7 +114,8 @@ export default function EditProperties() {
           />
         </label>
         {/* location */}
-        <label>location:
+        <label className="txt">location:
+          <br></br>
           <input required={true}
             type="text"
             name="location"
@@ -123,7 +125,8 @@ export default function EditProperties() {
           />
         </label>
         {/* Status */}
-        <label>Status:
+        <label className="txt">Status:
+        <br></br>
           <select value={newItemText.status} onChange={handleChange} 
           name ="status" id="status" required={true}>
             <option value=""></option>
@@ -133,7 +136,8 @@ export default function EditProperties() {
           </select>
         </label>
         {/* type */}
-        <label>Type:
+        <label className="txt">Type:
+        <br></br>
           <select value={newItemText.type} onChange={handleChange} 
           name ="type" id="type" required={true}>
             <option value=""></option>
@@ -144,29 +148,34 @@ export default function EditProperties() {
           </select>
         </label>
         {/* Price */}
-        <label>Price:
-        <input required={true}
-          type="number"
-          name="price"
-          id="price"
-          value={newItemText.price}
-          onChange={handleChange}
-        />
+        <label className="txt">Price:
+        <br></br>
+          <input required={true}
+            type="number"
+            name="price"
+            id="price"
+            value={newItemText.price}
+            onChange={handleChange}
+          />
         </label>
         {/* Picture */}
-        <label>Picture URL:
-        <input required={true}
-          type="text"
-          name="picture"
-          id="picture"
-          value={newItemText.picture}
-          onChange={handleChange}
-        />
+        <label className="txt">Picture URL:
+        <br></br>
+          <input required={true}
+            type="text"
+            name="picture"
+            id="picture"
+            value={newItemText.picture}
+            onChange={handleChange}
+          />
         </label>
-        <button type="submit">Update</button>
-        <Link to={`/app/properties`}>
-             <button>Cancel and Back</button>
-        </Link>
+        <button className="button-form" type="submit">Add Property</button>
+      
+      <Link to={`/app/properties`}>
+        <h3 className="button-form">Back</h3>
+      </Link>
       </form>
+      </div>
     );
 }
+
