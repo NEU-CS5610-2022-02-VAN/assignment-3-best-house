@@ -458,8 +458,7 @@ ul {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px 30px;
-  padding-left: 5rem;
-  margin-left: 10rem;
+  margin-left: 15rem;
   margin-right: 10rem;
 }
 

@@ -8,9 +8,7 @@ import Properties from "./components/Properties";
 import EditProperties from "./components/PropertyUpdate";
 import Profile from "./components/Profile";
 import NotFound from "./components/NotFound";
-import Home from "./components/Home";
 import VerifyUser from './components/VerifyUser'
-import AuthDebugger from "./components/AuthDebugger";
 import Mood from './components/Moods'
 import Detail from './components/Detail';
 import Landing from './components/Landing';

@@ -27,6 +27,8 @@ app.use(morgan("dev"));
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 
+const PORT = parseInt(process.env.PORT) || 8000;
+
 app.get("/ping", (req, res) => {
   res.send("pong");
 });
@@ -319,6 +321,6 @@ app.post("/verify-user", requireAuth, async (req, res) => {
 });
 
 
-app.listen(8000, () => {
-  console.log("Server running on http://localhost:8000 🎉 🚀");
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT} 🎉 🚀`);
 });
