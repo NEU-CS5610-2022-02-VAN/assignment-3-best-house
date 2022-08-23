@@ -61,10 +61,6 @@ ReactDOM.render(
 
             <Route path='/' element={<Landing/>}/>
             <Route path="/:propId"  element = {<Detail/>}/>
-
-            {/* <Route path='/login' element={<Login />}></Route> */}
-            {/* <Route path="/" element={<Home />} /> */}
-
             <Route path="/verify-user" element={<VerifyUser />} />
 
             <Route
@@ -77,11 +73,8 @@ ReactDOM.render(
               }
             >
               <Route path="properties" element={<Properties />} />
-              <Route path="properties/update/:propertyId" element={<EditProperties />} />
-             
-              <Route path="moods" element={<Mood />} />
-              
-              {/* <Route path="debugger" element={<AuthDebugger />} /> */}
+              <Route path="properties/update/:propertyId" element={<EditProperties />} />       
+              <Route path="moods" element={<Mood />} />\
               <Route index element={<Profile />} />
             </Route>
             <Route path="*" element={<NotFound />} />

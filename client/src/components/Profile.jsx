@@ -10,7 +10,6 @@ export default function Profile() {
 
 
   useEffect(() => {
-    // console.log("token=", accessToken);
 
     fetch(`${process.env.REACT_APP_API_URL}/moods/latest`, {
       method: "GET",
@@ -31,7 +30,6 @@ export default function Profile() {
   }, [accessToken]); 
 
 
-  console.log("latest=", latest);
 
   return (
     <div className="profileBox">

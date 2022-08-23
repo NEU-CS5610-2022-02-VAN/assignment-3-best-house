@@ -8,7 +8,6 @@ export default function Mood() {
   const [moodItems, setMoodsItems] = useMoods(); //all moods array
   const { accessToken } = useAuthToken();
 
-  console.log("mood items=", moodItems);
   
   //write
   async function insertMood(object) {
@@ -24,8 +23,6 @@ export default function Mood() {
     });
     if (data.ok) {
       const newMoood = await data.json();
-      console.log("add mood = ", newMoood);
-      console.log("propertiesItems = ", moodItems);
       return newMoood;
     } else {
       return null; 
@@ -34,7 +31,6 @@ export default function Mood() {
   }
 
   const handleChange = (event) => {
-    console.log(event.target.name);
     const name = event.target.name;
     const value = event.target.value;
     setNewMoodTxt(values => ({...values, [name]: value}))
@@ -46,8 +42,6 @@ export default function Mood() {
     if (!newMoodTxt) return;
 
     const newM = await insertMood(newMoodTxt);
-    console.log("state NIT=", newMoodTxt);
-    console.log("newProp=", newM);
     if (newM) {
       setMoodsItems([...moodItems, newM]);
       setNewMoodTxt("");
@@ -84,7 +78,7 @@ export default function Mood() {
               onChange={handleChange}
             />
           </label>
-          <button type="submit">Add Property</button>
+          <button type="submit">Add Mood</button>
       <Link to={`/app`}>
         <button>Back</button>
       </Link>

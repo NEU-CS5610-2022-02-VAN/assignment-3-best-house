@@ -31,8 +31,6 @@ export default function HandleProperties() {
     });
     if (data.ok) {
       const property = await data.json();
-      console.log("add prop = ", property);
-      console.log("propertiesItems = ", propertiesItems);
       return property;
     } else {
       return null; //error handling here: 
@@ -48,7 +46,6 @@ export default function HandleProperties() {
   }
 
   const handleChange = (event) => {
-    console.log(event.target.name);
     const name = event.target.name;
     const value = event.target.value;
     setNewItemText(values => ({...values, [name]: value}))
@@ -60,8 +57,6 @@ export default function HandleProperties() {
     if (!newItemText) return;
 
     const newProp = await insertProperty(newItemText);
-    console.log("state NIT=", newItemText);
-    console.log("newProp=", newProp);
     if (newProp) {
       setPropertiesItems([...propertiesItems, newProp]);
       setNewItemText({["owner"]: "Anonymous"});
@@ -84,11 +79,7 @@ export default function HandleProperties() {
     });
     if (data.ok) {
       const property = await data.json();
-      console.log("delete prop = ", property);
-      console.log("list =", propertiesItems);
-      console.log("current id=", id);
       setPropertiesItems(current => current.filter(item => {return item.id !== property.id}));
-      console.log("after list =", propertiesItems);
       return property;
     } else {
       return null;
@@ -157,9 +148,9 @@ export default function HandleProperties() {
           name ="type" id="type" required={true}>
             <option value=""></option>
             <option value="APARTMENT">Apartment</option>
-            <option value="HOUSE">Home</option>
+            <option value="HOUSE">House</option>
             <option value="TOWNHOUSE">Townhouse</option>
-            <option value="CONDO">Condon</option>
+            <option value="CONDO">Condo</option>
           </select>
         </label>
         {/* Price */}

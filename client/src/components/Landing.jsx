@@ -24,7 +24,6 @@ function Landing() {
     })
   }, []);  
 
-  console.log(allProps);
 
       
   return (
@@ -32,7 +31,7 @@ function Landing() {
 
       <div className="home">
         <h1 className='title'>Best House</h1>
-        <img className="wallpaper" src={mainpaper}/>        
+        <img alt="wallpaper of vancouver" className="wallpaper" src={mainpaper}/>        
       </div>
 
         <div>

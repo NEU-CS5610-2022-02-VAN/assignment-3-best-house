@@ -11,7 +11,6 @@ export default function EditProperties() {
     const { accessToken } = useAuthToken();
 
     let { propertyId } = useParams();
-    console.log(propertyId)
 
     async function getOldProperty() {
         const data = await fetch(`${process.env.REACT_APP_API_URL}/properties/find/${propertyId}`, {
@@ -23,7 +22,6 @@ export default function EditProperties() {
         });
         if (data.ok) {
           const property = await data.json();
-          console.log("old prop = ", property);
           setNewItemText(property);
           return property;
         } else {
@@ -50,7 +48,6 @@ export default function EditProperties() {
         });
         if (data.ok) {
           const property = await data.json();
-          console.log("add prop = ", property);
           return property;
           //show succeed prompt
         } else {
@@ -60,7 +57,6 @@ export default function EditProperties() {
       }
 
     const handleChange = (event) => {
-        console.log(event.target.name);
         const name = event.target.name;
         const value = event.target.value;
         setNewItemText(values => ({...values, [name]: value}))
@@ -73,8 +69,6 @@ export default function EditProperties() {
         if (!newItemText) return;
 
         const newProp = await updateProperty(newItemText);
-        console.log("state NIT=", newItemText);
-        console.log("newProp=", newProp);
         if (newProp) {
             setPropertiesItems([...propertiesItems, newProp]);
             setNewItemText("");
@@ -169,7 +163,7 @@ export default function EditProperties() {
             onChange={handleChange}
           />
         </label>
-        <button className="button-form" type="submit">Add Property</button>
+        <button className="button-form" type="submit">Update Property</button>
       
       <Link to={`/app/properties`}>
         <h3 className="button-form">Back</h3>

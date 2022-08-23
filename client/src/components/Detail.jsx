@@ -8,7 +8,6 @@ function Detail({house}) {
   let { propId } = useParams();
   const [prop, setProp] = useState([]);
 
-  console.log("the id=", propId);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/properties/find/${propId}`)
@@ -23,7 +22,6 @@ function Detail({house}) {
     })
   }, []);  
 
-  console.log(prop);
 
   return (
     <div>

@@ -35,8 +35,6 @@ jest.mock("@auth0/auth0-react", () => ({
         <Landing />
       </MemoryRouter>
     );
-  
-    expect(screen.getByText("Trip Advisor")).toBeInTheDocument();
     expect(screen.getByText("Login")).toBeInTheDocument();
   });
 
@@ -62,7 +60,7 @@ jest.mock("@auth0/auth0-react", () => ({
       </MemoryRouter>
     );
   
-    expect(screen.getByText("Start Trip")).toBeInTheDocument();
+    expect(screen.getByText("Enter App")).toBeInTheDocument();
   });
 
   test("enter App button navigates to /app", () => {
@@ -73,7 +71,7 @@ jest.mock("@auth0/auth0-react", () => ({
       </MemoryRouter>
     );
   
-    const enterAppButton = screen.getByText("Start Trip");
+    const enterAppButton = screen.getByText("Enter App");
     userEvent.click(enterAppButton);
-    expect(mockUseNavigate).toHaveBeenCalledWith("/app/spots");
+    expect(mockUseNavigate).toHaveBeenCalledWith("/app");
   });
