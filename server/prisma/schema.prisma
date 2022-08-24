@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String?
+  email        String   @unique
+  auth0Id      String   @unique @default("")
+  property     Property[]
+  mood         Mood[]
+}
+
+model Property { //7
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  owner       String    @default("Anonymous")
+  address     String    
+  location    String    @default("No recored")
+  status      Status   
+  type        PropertyType
+  price       Int   
+  picture    String    
+  manager     User      @relation(fields: [managerId], references: [id])
+  managerId   Int
+}
+
+
+model Mood {
+  id          Int       @id @default(autoincrement())
+  mood        String    @default("defaultMood")
+  createdAt   DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      Int       
+}
+
+
+enum PropertyType {
+  HOUSE
+  CONDO
+  TOWNHOUSE
+  APARTMENT
+}
+
+enum Status {
+  PENDING
+  TRANSCATION
+  CLOSED
+}
+
