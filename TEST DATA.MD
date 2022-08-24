@@ -3,7 +3,7 @@
 Click the best house tab in the top of the page to direct to home page to view all listing house:
 
 TEST DATA1:
-Owner = Ms.White
+//Owner = Ms.White
 Address = 1021 Howay Street
 Location = New Westminster
 Status = PENDING
