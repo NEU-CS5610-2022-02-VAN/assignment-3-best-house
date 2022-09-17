@@ -144,13 +144,8 @@ app.put("/properties/update/:id", requireAuth, async (req, res) => {
       id: id
     }
   })
-  let existNumber = await prisma.property.count({ //check if target exists
-    where: {
-      address: address
-    }
-  })
   
-  if(itemNumber != 0 && existNumber === 0){
+  if(itemNumber != 0){
     const updatedItem = await prisma.property.update({
       where: {
         id: id,
